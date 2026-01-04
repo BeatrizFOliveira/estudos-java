@@ -37,7 +37,6 @@ public class App {
         else if(media >= 3) System.out.println("RECUPERAÇÃO");
         else System.out.println("REPROVADO");
 
-
         //EXERCÍCIO 3------------------------------------------------------------
 
 
@@ -82,6 +81,7 @@ public class App {
             default:
                 System.out.println("Opção inválida");
                 break;
+
         }
     }
 }
