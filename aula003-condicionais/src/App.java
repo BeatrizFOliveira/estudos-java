@@ -10,7 +10,7 @@ public class App {
         var a = true;
         if(a == true){
             var b = 10; //Ao declarar variáveis deve estar dentro de chaves
-            System.out.println("A sentenca e verdadeira.");
+            System.out.println("A sentenca e verdadeira."+ b);
         }
         else
             System.out.println("A sentenca e falsa."); //Quando tiver apeans uma linha e não tiver declaração de variáveis não precisa usar {}
@@ -18,7 +18,7 @@ public class App {
 
         //EXERCÍCIO 2------------------------------------------------------------
 
-        Scanner entrada = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in); //Em todo o programa será usado um único scanner
 
         System.out.println("Prova semestral: ");
         float provaSemestral = entrada.nextFloat();
@@ -56,14 +56,12 @@ public class App {
 
         //EXERCÍCIO 4------------------------------------------------------------
 
-        Scanner consulta = new Scanner(System.in);
-
         System.out.println("Escolha uma opção: " + System.lineSeparator()
             + "1 - Cadastrar usuário" + System.lineSeparator()
             + "2 - Consultar usuário" + System.lineSeparator()
             + "3 - Abrir pedido" + System.lineSeparator()
             + "4 - Fechar pedido");
-        int opcao = consulta.nextInt();
+        int opcao = entrada.nextInt();
 
         switch (opcao) {
             case 1:
@@ -81,7 +79,7 @@ public class App {
             default:
                 System.out.println("Opção inválida");
                 break;
-
         }
+        entrada.close();
     }
 }
