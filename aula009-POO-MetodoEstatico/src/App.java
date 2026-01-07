@@ -6,15 +6,15 @@ public class App {
         Casa c2 = new Casa("Eduardo");
         Casa c3 = new Casa("Vitor");
 
-        System.out.println(c1.dono + " - " + c1.cor);
-        System.out.println(c2.dono + " - " + c2.cor);
-        System.out.println(c3.dono + " - " + c3.cor);
+        System.out.println(c1.dono + " - " + Casa.cor);
+        System.out.println(c2.dono + " - " + Casa.cor);
+        System.out.println(c3.dono + " - " + Casa.cor);
 
         Casa.cor = "Azul";
 
-        System.out.println(c1.dono + " - " + c1.cor);
-        System.out.println(c2.dono + " - " + c2.cor);
-        System.out.println(c3.dono + " - " + c3.cor);
+        System.out.println(c1.dono + " - " + Casa.cor);
+        System.out.println(c2.dono + " - " + Casa.cor);
+        System.out.println(c3.dono + " - " + Casa.cor);
 
     }
 }
