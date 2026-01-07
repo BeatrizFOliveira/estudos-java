@@ -15,6 +15,7 @@ public class App {
         System.out.println(c1.dono + " - " + Casa.cor);
         System.out.println(c2.dono + " - " + Casa.cor);
         System.out.println(c3.dono + " - " + Casa.cor);
+        
 
     }
 }
