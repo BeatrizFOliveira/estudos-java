@@ -39,5 +39,9 @@ public class ProdutoColletionRepository {
             return null;
         }
     }
+
+    public static List<Produto> findAll() {
+        return produtos;
+    }
     
 }

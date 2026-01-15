@@ -2,9 +2,7 @@ package com.aula013.projeto.repositorio;
 
 import java.util.List;
 import java.util.Vector;
-
 import javax.swing.JOptionPane;
-
 import com.aula013.projeto.model.Categoria;
 
 

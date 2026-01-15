@@ -5,10 +5,13 @@ package com.aula013.projeto;
 // import com.aula013.projeto.model.Produto;
 // import com.aula013.projeto.repositorio.ProdutoColletionRepository;
 import com.aula013.projeto.model.Categoria;
+import com.aula013.projeto.model.Produto;
 import com.aula013.projeto.repositorio.CategoriaCollectionRepository;
+import com.aula013.projeto.repositorio.ProdutoColletionRepository;
 import com.aula013.projeto.view.CategoriaView;
 import com.aula013.projeto.view.Opcao;
 import com.aula013.projeto.view.OpcaoView;
+import com.aula013.projeto.view.ProdutoView;
 
 
 public class Main {
@@ -46,15 +49,18 @@ public class Main {
 
     private static void cadastrarCategoria(){
         CategoriaView view = new CategoriaView();
-        Categoria categoria = view.form();
+        Categoria categoria = CategoriaView.form(new Categoria());
         CategoriaCollectionRepository.save(categoria);
         view.sucesso(categoria);
     }
     private static void cadastrarProduto(){
-
+        Produto produto = ProdutoView.form(new Produto());
+        ProdutoColletionRepository.save(produto);
+        ProdutoView.sucesso(produto);
     }
     private static void alterarProduto(){
-        
+        Produto produto = ProdutoView.select(null);
+        ProdutoView.update(produto);
     }
     private static void consultarProdutoPorID(){
 
