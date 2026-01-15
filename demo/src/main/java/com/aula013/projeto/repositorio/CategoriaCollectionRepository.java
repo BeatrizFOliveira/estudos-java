@@ -24,7 +24,7 @@ public class CategoriaCollectionRepository {
         categorias.add(livros);
     }
     //METODOS
-    public static List<Categoria> findAll(){
+    public List<Categoria> findAll(){
         return categorias;
     }
 
