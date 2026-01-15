@@ -5,24 +5,26 @@ import java.time.LocalDateTime;
 
 import com.aula013.projeto.model.Categoria;
 import com.aula013.projeto.model.Produto;
+import com.aula013.projeto.repositorio.CategoriaCollectionRepository;
+import com.aula013.projeto.repositorio.ProdutoColletionRepository;
 
 
 public class Main {
     public static void main(String[] args) {
+        
         Categoria categoria = new Categoria();
-        categoria.setId(1l).setNome("Eletronicos");
+        categoria.setNome("Eletronicos");
+        Categoria categoriaSalva = CategoriaCollectionRepository.save(categoria);
+        System.out.println("Categoria: " + categoriaSalva);
 
         Produto produto = new Produto();
         produto
-            .setId(1l)
             .setNome("Kindle")
             .setDescricao("E-Reader")
-            .setCategoria(categoria)
+            .setCategoria(CategoriaCollectionRepository.findByNome("Eletrônicos").get(0))
             .setDataDeCadastro(LocalDateTime.now())
             .setPreco(BigDecimal.valueOf(800));
-
-
-        System.out.println("Categoria: " + categoria);
-        System.out.println("Produto: " + produto);
+        Produto produto1 = ProdutoColletionRepository.save(produto);
+        System.out.println("id: " + produto1.getId() + "Produto1: " + produto1.getNome());
     }
 }

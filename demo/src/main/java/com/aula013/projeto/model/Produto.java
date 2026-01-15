@@ -1,10 +1,11 @@
 package com.aula013.projeto.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.math.BigDecimal;
 
 public class Produto {
-    private long id;
+    private Long id;
     private String nome;
     private String descricao;
     private BigDecimal preco;
@@ -13,28 +14,27 @@ public class Produto {
 
     //CONSTRUTORES------------------------------------------------------
     public Produto(){}
-    public Produto(long id, String nome, String descricao, BigDecimal preco, LocalDateTime dataDeCadastro,
-            Categoria categoria) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.dataDeCadastro = dataDeCadastro;
-        this.categoria = categoria;
+    public Produto(Long id, String nome, String descricao, BigDecimal preco, LocalDateTime dataDeCadastro, Categoria categoria) {
+        this.setId(id);
+        this.setNome(nome);
+        this.setDescricao(descricao);
+        this.setPreco(preco);
+        this.setDataDeCadastro(dataDeCadastro);
+        this.setCategoria(categoria);
     }
     public Produto(String nome, String descricao, BigDecimal preco, LocalDateTime dataDeCadastro, Categoria categoria) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.dataDeCadastro = dataDeCadastro;
-        this.categoria = categoria;
+        this.setNome(nome);
+        this.setDescricao(descricao);
+        this.setPreco(preco);
+        this.setDataDeCadastro(dataDeCadastro);
+        this.setCategoria(categoria);
     }
 
     //GETTER AND SETTER -------------------------------------
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public Produto setId(long id) {
+    public Produto setId(Long id) {
         this.id = id;
         return this;
     }
@@ -77,29 +77,20 @@ public class Produto {
     //TO STRING----------------------------------------------
     @Override
     public String toString() {
-        return nome.toUpperCase();
+        return getNome();
     }
 
     //HASHCODE E EQUALS--------------------------------------
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (int) (id ^ (id >>> 32));
-        return result;
+        return Objects.hash(nome);
     }
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Produto other = (Produto) obj;
-        if (id != other.id)
-            return false;
-        return true;
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return nome.equals(produto.nome);
     }
 
     

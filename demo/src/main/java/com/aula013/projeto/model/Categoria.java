@@ -1,25 +1,27 @@
 package com.aula013.projeto.model;
 
+import java.util.Objects;
+
 public class Categoria {
 
-    private long id;
+    private Long id;
     private String nome;
 
     //CONSTRUTORES--------------------------------------------
     public Categoria(){}
-    public Categoria(long id, String nome) {
-        this.id = id;
-        this.nome = nome;
+    public Categoria(Long id, String nome) {
+        this.setId(id);
+        this.setNome(nome);
     }
     public Categoria(String nome) {
-        this.nome = nome;
+        this.setNome(nome);
     }
     
     //GETTER E SETTER-----------------------------------------
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public Categoria setId(long id) {
+    public Categoria setId(Long id) {
         this.id = id;
         return this;
     }
@@ -34,33 +36,21 @@ public class Categoria {
     //TO STRING-----------------------------------------------
     @Override
     public String toString() {
-        return nome.toUpperCase();
+        return getNome().toUpperCase();
     }
 
     //HASHCODE E EQUALS---------------------------------------
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        return result;
+        return Objects.hash(getNome());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Categoria other = (Categoria) obj;
-        if (nome == null) {
-            if (other.nome != null)
-                return false;
-        } else if (!nome.equals(other.nome))
-            return false;
-        return true;
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Categoria categoria  = (Categoria) o;
+        return Objects.equals(getNome(), categoria.getNome()); 
     }
 
 }
