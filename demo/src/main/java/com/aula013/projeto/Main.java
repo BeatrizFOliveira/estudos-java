@@ -1,5 +1,9 @@
 package com.aula013.projeto;
 
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
 // import java.math.BigDecimal;
 // import java.time.LocalDateTime;
 // import com.aula013.projeto.model.Produto;
@@ -12,6 +16,7 @@ import com.aula013.projeto.view.CategoriaView;
 import com.aula013.projeto.view.Opcao;
 import com.aula013.projeto.view.OpcaoView;
 import com.aula013.projeto.view.ProdutoView;
+
 
 
 public class Main {
@@ -63,10 +68,32 @@ public class Main {
         ProdutoView.update(produto);
     }
     private static void consultarProdutoPorID(){
+        Long id = 0l;
+        do {
+            try{
+                id = Long.parseLong(JOptionPane.showInputDialog("Informe o id do produto"));
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "ID inválido");
+            }
+        } while (id <=0);
 
+        Produto p = ProdutoColletionRepository.findById(id);
+        if(p != null){
+            ProdutoView.show(p);
+        } else{
+            JOptionPane.showMessageDialog(null, "Produto não encontrado");
+        }
     }
     private static void consultarProdutoPorCategoria(){
+        Categoria categoria = CategoriaView.select(null);
+        List<Produto> produtos = ProdutoColletionRepository.findByCategoria(categoria);
 
+        if(produtos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Não encontrarmos produtos com a categoria " + categoria.getNome());
+        }else{
+            produtos.forEach(ProdutoView::show);
+            produtos.forEach(System.out::println);
+        }
     }
     private static void encerrarOSistema(){
         System.exit(0);

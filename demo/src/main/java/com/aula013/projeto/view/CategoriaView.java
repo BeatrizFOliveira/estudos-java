@@ -7,7 +7,7 @@ import com.aula013.projeto.repositorio.CategoriaCollectionRepository;
 
 public class CategoriaView {
 
-    static CategoriaCollectionRepository repository;
+    static CategoriaCollectionRepository repository = new CategoriaCollectionRepository();
 
     public static Categoria select(Categoria categoria){
         Categoria ret = (Categoria) JOptionPane.showInputDialog(null,
@@ -30,7 +30,8 @@ public class CategoriaView {
 
     public static Categoria form(Categoria categoria){
         String nome = JOptionPane.showInputDialog(null, "Informe o nome da categoria", categoria!=null ? categoria.getNome() : "");
-        return new Categoria(nome);
+        categoria.setNome(nome);
+        return categoria;
     }
 
     

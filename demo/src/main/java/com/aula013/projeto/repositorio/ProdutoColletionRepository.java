@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import com.aula013.projeto.model.Categoria;
 import com.aula013.projeto.model.Produto;
 
 public class ProdutoColletionRepository {
@@ -44,4 +45,11 @@ public class ProdutoColletionRepository {
         return produtos;
     }
     
+    public static List<Produto> findByCategoria(Categoria categoria) {
+        return produtos.stream().filter(p->p.getCategoria().equals(categoria)).toList();
+    }
+
+    public static Produto findById(Long id) {
+        return produtos.stream().filter(p->p.getId().equals(id)).findFirst().orElse(null);
+    }
 }
